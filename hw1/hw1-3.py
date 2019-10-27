@@ -19,7 +19,7 @@ all_data = all_data.iloc[order]
 y_data = y_data.iloc[order]
 
 # 1) from second column to 499th column
-all_data = all_data.iloc[:, 2:500]
+all_data = all_data.iloc[:, 1:500]
 
 # 2) Label Encoding
 le = LabelEncoder()
@@ -35,7 +35,8 @@ X_data = mms.fit_transform(all_data)
 ########### K-means #############
 # 1) K - clustering
 km = KMeans(n_clusters=K)
-y_hat = km.fit_predict(X_data)
+km.fit(X_data)
+y_hat = km.labels_
 
 # 2) NMI
 kmeans_NMI = NMI(y_label, y_hat, average_method='arithmetic')

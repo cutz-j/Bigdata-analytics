@@ -23,7 +23,7 @@ X_val = mms.transform(x_val)
 X_test = mms.transform(x_test)
 
 alpha_list = [0.0001, 0.001, 0.01, 0.1, 1]
-label = ['latitue', 'longitude']
+label = ['latitute', 'longitude']
 
 for i in range(2): # 0: latitute, 1: longitude
     for model in ['LeastSquare', 'Ridge', 'Lasso']:

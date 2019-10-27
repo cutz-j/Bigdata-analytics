@@ -19,8 +19,8 @@ x = data[:,:7]
 y = data[:, [-1]]
 
 
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state = 42)
-x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size = 0.25, random_state = 42)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, stratify=y, random_state = 42)
+x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size = 0.25, stratify=y_train, random_state = 42)
 
 
 ss = StandardScaler()
@@ -42,8 +42,8 @@ for kernel in kernel_list: # kernel function
     
     best_f1 = param_list[np.argmax(f1_list)]
     svc_model = SVC(kernel=kernel, C=best_f1 if kernel=='linear' else 1.0, gamma='auto_deprecated' if kernel=='linear' else best_f1)
-    svc.fit(X_train, y_train)
-    y_hat = svc.predict(X_test)
+    svc_model.fit(X_train, y_train)
+    y_hat = svc_model.predict(X_test)
     
     # result
     print("%s kernel SVM Best parameter C: %f" %(kernel, best_f1))
