@@ -7,14 +7,19 @@ from sklearn.metrics import f1_score, confusion_matrix
 import warnings
 warnings.filterwarnings("ignore")
 
+# Seed 0
 np.random.seed(0)
 
+########## Data Load ###########
 data = np.loadtxt('./data/SvmData.txt')
 data.shape
+
+# Permutation
 n_sample = len(data)
 order = np.random.permutation(n_sample)
 data = data[order]
 
+# Column split
 x = data[:,:7]
 y = data[:, [-1]]
 
