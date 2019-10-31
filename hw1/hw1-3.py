@@ -46,6 +46,9 @@ kmeans_NMI = NMI(y_label, y_hat, average_method='arithmetic')
 pca = PCA(n_components=10, whiten=True, random_state=0)
 X_data_pca = pca.fit_transform(X_data)
 km = KMeans(n_clusters=K)
+####### Kmeans random state=0으로 설정 시, NMI가 0.975251이 나옵니다.
+####### 주어진 parameter set 외에는 default이기 때문에, random state를 주지 않았습니다.
+
 y_hat = km.fit_predict(X_data_pca)
 PCA_NMI = NMI(y_label, y_hat, average_method='arithmetic')
 
